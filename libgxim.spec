@@ -6,27 +6,27 @@
 Summary:	GObject-based XIM protocol library
 Summary(pl.UTF-8):	Biblioteka protokołu XIM oparta na GObject
 Name:		libgxim
-Version:	0.3.3
+Version:	0.4.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: http://code.google.com/p/libgxim/downloads/list
 Source0:	http://libgxim.googlecode.com/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	5fb6b86193b55c54a20c591188019bc3
-Patch0:		%{name}-fix-fontset.patch
+# Source0-md5:	bbe8ee379e68955a6f9ff2ac46b05024
 URL:		http://code.google.com/p/libgxim/
 BuildRequires:	dbus-devel >= 0.23
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	gettext
-BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	intltool
 BuildRequires:	pkgconfig
 BuildRequires:	ruby
+BuildRequires:	xorg-lib-libX11-devel
 Requires:	dbus-libs >= 0.23
 Requires:	dbus-glib >= 0.74
-Requires:	glib2 >= 1:2.16.0
+Requires:	glib2 >= 1:2.26.0
 Requires:	gtk+2 >= 2:2.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -51,7 +51,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	dbus-devel >= 0.23
 Requires:	dbus-glib-devel >= 0.74
-Requires:	glib2-devel >= 1:2.16.0
+Requires:	glib2-devel >= 1:2.26.0
 Requires:	gtk+2-devel >= 2:2.2.0
 
 %description devel
@@ -85,12 +85,12 @@ Dokumentacja API biblioteki libgxim.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 %configure \
-	--with-html-dir=%{_gtkdocdir} \
-	%{!?with_static_libs:--disable-static}
+	--disable-silent-rules \
+	%{!?with_static_libs:--disable-static} \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -114,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libgxim.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgxim.so.2
+%attr(755,root,root) %ghost %{_libdir}/libgxim.so.3
 
 %files devel
 %defattr(644,root,root,755)
