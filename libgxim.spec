@@ -13,6 +13,7 @@ Group:		Libraries
 #Source0Download: http://code.google.com/p/libgxim/downloads/list
 Source0:	http://libgxim.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	bbe8ee379e68955a6f9ff2ac46b05024
+Patch0:		format-security.patch
 URL:		http://code.google.com/p/libgxim/
 BuildRequires:	dbus-devel >= 0.23
 BuildRequires:	dbus-glib-devel >= 0.74
@@ -85,6 +86,7 @@ Dokumentacja API biblioteki libgxim.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
