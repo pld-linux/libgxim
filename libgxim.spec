@@ -7,7 +7,7 @@ Summary:	GObject-based XIM protocol library
 Summary(pl.UTF-8):	Biblioteka protokołu XIM oparta na GObject
 Name:		libgxim
 Version:	0.4.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: http://code.google.com/p/libgxim/downloads/list
