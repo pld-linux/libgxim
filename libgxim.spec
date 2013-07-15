@@ -6,15 +6,15 @@
 Summary:	GObject-based XIM protocol library
 Summary(pl.UTF-8):	Biblioteka protokołu XIM oparta na GObject
 Name:		libgxim
-Version:	0.4.0
-Release:	2
+Version:	0.5.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: http://code.google.com/p/libgxim/downloads/list
-Source0:	http://libgxim.googlecode.com/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	bbe8ee379e68955a6f9ff2ac46b05024
+Source0:	http://bitbucket.org/tagoh/%{name}/downloads/%{name}-%{version}.tar.bz2
+# Source0-md5:	4bb1fa63d00eb224439d413591c29a6a
 Patch0:		format-security.patch
-URL:		http://code.google.com/p/libgxim/
+URL:		http://tagoh.bitbucket.org/libgxim/
 BuildRequires:	dbus-devel >= 0.23
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	gettext-devel
@@ -104,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
-%find_lang %{name}
+#%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -112,11 +112,12 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{name}.lang
+#%files -f %{name}.lang
+%files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libgxim.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgxim.so.3
+%attr(755,root,root) %ghost %{_libdir}/libgxim.so.4
 
 %files devel
 %defattr(644,root,root,755)
