@@ -10,15 +10,14 @@ Version:	0.5.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-#Source0Download: http://code.google.com/p/libgxim/downloads/list
-Source0:	http://bitbucket.org/tagoh/%{name}/downloads/%{name}-%{version}.tar.bz2
+Source0:	http://bitbucket.org/tagoh/libgxim/downloads/%{name}-%{version}.tar.bz2
 # Source0-md5:	4bb1fa63d00eb224439d413591c29a6a
 Patch0:		format-security.patch
 URL:		http://tagoh.bitbucket.org/libgxim/
 BuildRequires:	dbus-devel >= 0.23
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	gtk+2-devel >= 2:2.2.0
 BuildRequires:	intltool
@@ -27,7 +26,7 @@ BuildRequires:	ruby
 BuildRequires:	xorg-lib-libX11-devel
 Requires:	dbus-libs >= 0.23
 Requires:	dbus-glib >= 0.74
-Requires:	glib2 >= 1:2.26.0
+Requires:	glib2 >= 1:2.32.0
 Requires:	gtk+2 >= 2:2.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,7 +51,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	dbus-devel >= 0.23
 Requires:	dbus-glib-devel >= 0.74
-Requires:	glib2-devel >= 1:2.26.0
+Requires:	glib2-devel >= 1:2.32.0
 Requires:	gtk+2-devel >= 2:2.2.0
 
 %description devel
@@ -104,6 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
+# only empty translations exist (as of 0.5.0)
 #%find_lang %{name}
 
 %clean
