@@ -2,12 +2,12 @@
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_without	static_libs	# don't build static libraries
-#
+
 Summary:	GObject-based XIM protocol library
 Summary(pl.UTF-8):	Biblioteka protokołu XIM oparta na GObject
 Name:		libgxim
 Version:	0.5.0
-Release:	6
+Release:	7
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://bitbucket.org/tagoh/libgxim/downloads/%{name}-%{version}.tar.bz2
@@ -76,6 +76,9 @@ Statyczna biblioteka libgxim.
 Summary:	libgxim API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libgxim
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for libgxim library.
