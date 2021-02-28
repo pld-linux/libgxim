@@ -76,9 +76,7 @@ Statyczna biblioteka libgxim.
 Summary:	libgxim API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libgxim
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API and internal documentation for libgxim library.
