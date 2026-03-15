@@ -7,12 +7,13 @@ Summary:	GObject-based XIM protocol library
 Summary(pl.UTF-8):	Biblioteka protokołu XIM oparta na GObject
 Name:		libgxim
 Version:	0.5.0
-Release:	8
+Release:	9
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://bitbucket.org/tagoh/libgxim/downloads/%{name}-%{version}.tar.bz2
 # Source0-md5:	4bb1fa63d00eb224439d413591c29a6a
 Patch0:		format-security.patch
+Patch1:		gximcore-include-gdkx.patch
 URL:		http://tagoh.bitbucket.org/libgxim/
 BuildRequires:	dbus-devel >= 0.23
 BuildRequires:	dbus-glib-devel >= 0.74
@@ -87,6 +88,7 @@ Dokumentacja API biblioteki libgxim.
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %configure \
@@ -105,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 # only empty translations exist (as of 0.5.0)
-#%find_lang %{name}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -113,7 +115,6 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-#%files -f %{name}.lang
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README

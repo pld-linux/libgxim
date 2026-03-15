@@ -1,0 +1,13 @@
+--- libgxim-0.5.0/libgxim/gximcore.c.orig	2013-05-28 08:58:37.000000000 +0200
++++ libgxim-0.5.0/libgxim/gximcore.c	2026-03-15 12:00:00.000000000 +0100
+@@ -26,9 +26,8 @@
+ #endif
+
+ #include <glib/gi18n-lib.h>
+-#ifdef GNOME_ENABLE_DEBUG
+ #include <gdk/gdkx.h>
+-#endif /* GNOME_ENABLE_DEBUG */
++
+ #include "gximacc.h"
+ #include "gximconnection.h"
+ #include "gximmarshal.h"
